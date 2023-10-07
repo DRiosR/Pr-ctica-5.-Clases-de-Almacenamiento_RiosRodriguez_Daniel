@@ -37,6 +37,8 @@ int main()
         case 3:
             act3();
             menu = repetir();
+            system("cls");
+
             break;
         }
     } while (menu == 1);
@@ -100,7 +102,7 @@ void act3()
     int numero_jugador, n;
     do
     {
-        n=0;
+        n = 0;
         contador_intentos++;
 
         generarNumeroLoteria(&numero_jugador, 1, 100);
@@ -111,5 +113,5 @@ void act3()
             printf("Numero de intentos: %d\n", contador_intentos);
             n = 1;
         }
-    } while (n==0);
+    } while (n == 0);
 }
