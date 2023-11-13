@@ -1,9 +1,10 @@
 /*
-1. El juego de la lotería: Simular un juego de lotería utilizando variables estáticas y
-automáticas en C.
-2. La Carrera de Coches: Variables de registro (register) en C para simular una
-carrera de coches.
+Nombre del archivo: practica5.c
+Descripción: programa que tiene 3 opciones, juego de loteria, carrera de coches y ganar loteria y ver intentos.
+Autor: Daniel Rios Rodriguez
+Fecha de creación: 12 de Noviembre de 2023
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -43,6 +44,29 @@ int main()
         }
     } while (menu == 1);
 }
+/*
+Función: generarNumeroLoteria
+Descripción: Genera un número aleatorio entre un rango dado y lo asigna a la variable numerodeloteria.
+Parámetros:
+- numerodeloteria: Puntero a la variable donde se almacenará el número generado.
+- ri: Límite inferior del rango.
+- rs: Límite superior del rango.
+Valor de retorno: Ninguno.
+*/
+void generarNumeroLoteria(int *numerodeloteria, int ri, int rs)
+{
+    int x;
+    x = (rs - ri) + 1;
+    *numerodeloteria = (rand() % x) + ri;
+}
+
+/*
+Función: act1
+Descripción: Simula el juego de la lotería, generando un número aleatorio para el jugador y comparándolo con un número ganador predefinido.
+Incrementa el contador de intentos.
+Parámetros: Ninguno.
+Valor de retorno: Ninguno.
+*/
 void act1()
 {
     contador_intentos++;
@@ -50,9 +74,9 @@ void act1()
     generarNumeroLoteria(&numero_jugador, 1, 100);
     if (numero_jugador == numero_ganador)
     {
-        printf("Felicidades, ganaste la loteria!\n");
+        printf("Felicidades, ganaste la lotería!\n");
         printf("%d %d\n", numero_ganador, numero_jugador);
-        printf("Numero de intentos: %d\n", contador_intentos);
+        printf("Número de intentos: %d\n", contador_intentos);
     }
     else
     {
@@ -60,6 +84,14 @@ void act1()
         printf("%d %d\n", numero_ganador, numero_jugador);
     }
 }
+
+/*
+Función: act2
+Descripción: Simula una carrera de coches, generando velocidades aleatorias para tres coches y calculando el tiempo que les toma recorrer 1000 metros.
+Imprime los resultados y determina el ganador basándose en el tiempo más bajo.
+Parámetros: Ninguno.
+Valor de retorno: Ninguno.
+*/
 void act2()
 {
     register int coche1, coche2, coche3;
@@ -91,12 +123,14 @@ void act2()
         printf("coche 3 Ganara la carrera\n");
     }
 }
-void generarNumeroLoteria(int *numerodeloteria, int ri, int rs)
-{
-    int x;
-    x = (rs - ri) + 1;
-    *numerodeloteria = (rand() % x) + ri;
-}
+
+/*
+Función: act3
+Descripción: Similar a act1, pero repite el proceso hasta que el jugador gane la lotería.
+Incrementa el contador de intentos en cada intento.
+Parámetros: Ninguno.
+Valor de retorno: Ninguno.
+*/
 void act3()
 {
     int numero_jugador, n;
@@ -108,9 +142,9 @@ void act3()
         generarNumeroLoteria(&numero_jugador, 1, 100);
         if (numero_jugador == numero_ganador)
         {
-            printf("Felicidades, ganaste la loteria!\n");
+            printf("Felicidades, ganaste la lotería!\n");
             printf("%d %d\n", numero_ganador, numero_jugador);
-            printf("Numero de intentos: %d\n", contador_intentos);
+            printf("Número de intentos: %d\n", contador_intentos);
             n = 1;
         }
     } while (n == 0);
